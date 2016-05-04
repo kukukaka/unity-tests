@@ -4,18 +4,17 @@ using System.Collections;
 public class MusicPlayer : MonoBehaviour {
 	static MusicPlayer instance = null;
 	
-	// Use this for initialization
-	void Start () {
+	
+	void Awake () {
 		if (instance != null) {
 			Destroy (gameObject);
-			print ("Duplicate music destroyed");
-			
+			print ("Duplicate music destroyed");	
 		} else {
 			instance = this;
+			GameObject.DontDestroyOnLoad(gameObject);
 		}
-		
-		GameObject.DontDestroyOnLoad(gameObject);
 	}
+	
 	
 	// Update is called once per frame
 	void Update () {
